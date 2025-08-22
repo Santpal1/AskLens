@@ -1,0 +1,277 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e9f0f7;
+}
+
+.container {
+  width: 100%;
+  max-width: 56.25rem;
+  margin: 1rem 15rem 1rem 15rem;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: block;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+textarea {
+  width: 95%;
+  padding: 1rem;
+  font-size: 1rem;
+  margin-right: 30px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: vertical; 
+  margin-bottom: 1rem;
+  background: #f8f9fb;
+  color: black;
+}
+
+input[type="file"] {
+  color: #000;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #357ab8;
+}
+
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+select,
+button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+select {
+  /* border: 1px solid #007bff; */
+  background-color: #000000;
+  cursor: pointer;
+}
+select:hover {
+  background-color: #333333;
+  color: white;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* ✅ Reset Button Specific Style */
+button:nth-of-type(2) {
+  background-color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
+button:nth-of-type(2):hover {
+  background-color: #b02a37;
+}
+
+.output {
+  background: #fdfdfd;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
+  color: black
+}
+
+.output h3 {
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.output ol {
+  padding-left: 1.2rem;
+}
+
+.error {
+  color: #c0392b;
+  font-weight: bold;
+  margin-top: 1rem;
+  background: #ffe6e6;
+  padding: 0.8rem;
+  border-radius: 8px;
+}
+
+.history {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  color: black;
+}
+
+.history ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+}
+
+
+.chatbot {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(to bottom right, #ffffff, #f1f4f9);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.chatbot h3 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.chat-log {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 1rem;
+  background: #eef3f7;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 1.2rem;
+}
+
+.chat-message {
+  display: flex;
+  margin-bottom: 0.8rem;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.chat-message.user {
+  justify-content: flex-end;
+}
+
+.chat-message.assistant {
+  justify-content: flex-start;
+}
+
+.chat-bubble {
+  max-width: 70%;
+  padding: 0.75rem 1rem;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.chat-message.user .chat-bubble {
+  background-color: #007bff;
+  color: white;
+  border-bottom-right-radius: 0;
+}
+
+.chat-message.assistant .chat-bubble {
+  background-color: #e2eafc;
+  color: #333;
+  border-bottom-left-radius: 0;
+}
+
+.chat-input {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  background-color: white;
+  color: black;
+  transition: border 0.3s ease;
+}
+
+.chat-input input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.chat-input button {
+  padding: 0.65rem 1.2rem;
+  font-size: 1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.chat-input button:hover {
+  background-color: #218838;
+}
+
+.clear-chat-btn {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  margin: 1rem auto;
+  display: block;
+}
+
+.clear-chat-btn:hover {
+  background-color: #cc0000;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
