@@ -6,6 +6,7 @@ body {
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
   min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scroll on body */
 }
 
 @keyframes gradientShift {
@@ -29,6 +30,7 @@ body {
   display: block;
   animation: containerFadeIn 0.8s ease-out;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .container:hover {
@@ -483,7 +485,7 @@ button:nth-of-type(2):hover {
 
 .chatbot {
   margin-top: 2.5rem;
-  padding: 2rem;
+  padding: 1.5rem;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 244, 249, 0.95) 100%);
   border-radius: 20px;
   border: 1px solid rgba(102, 126, 234, 0.2);
@@ -491,6 +493,9 @@ button:nth-of-type(2):hover {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   animation: chatbotSlideIn 1s ease-out;
   transition: all 0.3s ease;
+  overflow-x: hidden; /* Prevent horizontal overflow in chatbot */
+  width: 95%;
+  max-width: 100%;
 }
 
 .chatbot:hover {
@@ -528,12 +533,16 @@ button:nth-of-type(2):hover {
 .chat-log {
   max-height: 300px;
   overflow-y: auto;
+  overflow-x: hidden; /* Explicitly hide horizontal scrollbar */
   padding: 1rem;
   background: linear-gradient(135deg, #eef3f7 0%, #e1ecf4 100%);
   border: 2px solid rgba(102, 126, 234, 0.2);
   border-radius: 15px;
   margin-bottom: 1.2rem;
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .chat-log::before {
@@ -556,6 +565,9 @@ button:nth-of-type(2):hover {
   display: flex;
   margin-bottom: 1rem;
   animation: messageFadeIn 0.5s ease-out;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .chat-message.user {
@@ -567,14 +579,18 @@ button:nth-of-type(2):hover {
 }
 
 .chat-bubble {
-  max-width: 70%;
+  max-width: 65%; /* Reduced from 70% to ensure it fits better */
   padding: 1rem 1.25rem;
   border-radius: 20px;
   font-size: 0.95rem;
   line-height: 1.5;
   word-wrap: break-word;
+  word-break: break-word; /* Force long words to break */
+  overflow-wrap: break-word; /* Additional word breaking support */
   position: relative;
   transition: all 0.3s ease;
+  box-sizing: border-box;
+  min-width: 0; /* Allow shrinking below content size */
 }
 
 .chat-bubble:hover {
@@ -611,6 +627,9 @@ button:nth-of-type(2):hover {
   display: flex;
   gap: 1rem;
   animation: inputSlideUp 0.6s ease-out;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 @keyframes inputSlideUp {
@@ -634,6 +653,8 @@ button:nth-of-type(2):hover {
               linear-gradient(135deg, #667eea, #764ba2) border-box;
   color: black;
   transition: all 0.3s ease;
+  min-width: 0; /* Allow input to shrink */
+  box-sizing: border-box;
 }
 
 .chat-input input:focus {
@@ -657,6 +678,8 @@ button:nth-of-type(2):hover {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0; /* Prevent button from shrinking */
+  white-space: nowrap; /* Keep button text on one line */
 }
 
 .chat-input button::after {
@@ -720,9 +743,10 @@ button:nth-of-type(2):hover {
   box-shadow: 0 10px 25px rgba(204, 0, 0, 0.4);
 }
 
-/* Scrollbar styling */
+/* Enhanced scrollbar styling - only vertical */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 0px; /* Hide horizontal scrollbar */
 }
 
 ::-webkit-scrollbar-track {
@@ -737,6 +761,11 @@ button:nth-of-type(2):hover {
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+/* Hide horizontal scrollbar for specific elements */
+::-webkit-scrollbar:horizontal {
+  display: none;
 }
 
 /* Loading states */
