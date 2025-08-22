@@ -114,6 +114,12 @@ function App() {
     }
   };
 
+  const handleFileRemove = () => {
+    setFile(null);
+    const fileInput = document.getElementById("fileInput");
+    if (fileInput) fileInput.value = "";
+  };
+
   const handleReset = () => {
     if (abortController) abortController.abort();
     setText("");
@@ -143,13 +149,29 @@ function App() {
         placeholder="Enter text or leave empty if uploading a file..."
       />
 
-      <input
-        id="fileInput"
-        type="file"
-        accept=".png,.jpg,.jpeg"
-        onChange={handleFileChange}
-        disabled={loading}
-      />
+      <div className="file-input-container">
+        <input
+          id="fileInput"
+          type="file"
+          accept=".png,.jpg,.jpeg"
+          onChange={handleFileChange}
+          disabled={loading}
+        />
+        {file && (
+          <div className="file-preview">
+            <span className="file-name">📎 {file.name}</span>
+            <button 
+              type="button" 
+              className="file-remove-btn" 
+              onClick={handleFileRemove}
+              disabled={loading}
+              title="Remove file"
+            >
+              ✕
+            </button>
+          </div>
+        )}
+      </div>
 
       <div className="controls">
         <select value={mode} onChange={(e) => setMode(e.target.value)} disabled={loading}>
